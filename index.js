@@ -21,10 +21,11 @@ app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
 app.use(bodyParser.raw()); // support encoded bodies
 
 app.post('/send-to', (req, res) => {
-    const {id, content} = req.body;
-    const emitted = io.emit(id, content);
+    //const {id, content} = req.body;
+    //const emitted = io.emit(id, content);
+    const emitted = true;
     let code = emitted ? 200 : 500;
-    let msg = emitted ? "gSuccessfully emitted" : "Error while emitting";
+    let msg = emitted ? "Successfully emitted" : "Error while emitting";
     return res.send({
         code: code,
         msg: msg
