@@ -11,7 +11,8 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: "*",
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
 
@@ -23,7 +24,7 @@ app.post('/send-to', (req, res) => {
     const {id, content} = req.body;
     const emitted = io.emit(id, content);
     let code = emitted ? 200 : 500;
-    let msg = emitted ? "Successfully emitted" : "Error while emitting";
+    let msg = emitted ? "gSuccessfully emitted" : "Error while emitting";
     return res.send({
         code: code,
         msg: msg
