@@ -22,7 +22,7 @@ app.use(bodyParser.raw()); // support encoded bodies
 
 app.post('/send-to', (req, res) => {
     const {id, content} = req.body;
-    const emitted = io.emit(id, content);
+    const emitted = io.broadcast.emit(id, content);
     let code = emitted ? 200 : 500;
     let msg = emitted ? "Successfully emitted" : "Error while emitting";
     return res.send({
