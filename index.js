@@ -33,6 +33,7 @@ app.post('/send-to', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+    console.log('sockets count -> ', io.sockets.sockets.lenght)
 });
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
